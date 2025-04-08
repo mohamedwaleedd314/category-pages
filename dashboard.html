@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .recipe-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+        h1 {
+            
+            font-family: "Pacifico", cursive;
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            background: url('imagess/pexels-alleksana-4051591.jpg') no-repeat center center/cover;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            border-radius: 0 0 20px 20px;   
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+            font-size: 36px;
+        }
+        
+        .dashboard-content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo img {
+      height: 70px;
+    }
+        .logo {
+            position: absolute;
+            top: 30px;
+            left: 20px;
+        }
+        
+        .search-bar {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        #search {
+            padding: 12px 20px;
+            width: 400px;
+            max-width: 80%;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .total-recipes {
+            text-align: center;
+            margin: 20px 0 30px;
+            font-size: 18px;
+            color: #555;
+            font-weight: bold;
+        }
+        
+        /* Recipe Cards */
+        .recipe-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+        }
+        
+        .recipe-card {
+            width: 280px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            margin: 0 auto;
+        }
+        
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+
+            
+        }
+        
+        .recipe-content {
+            padding: 20px;
+        }
+        
+        .recipe-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .recipe-level {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .recipe-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .recipe-time, .recipe-calories {
+            display: flex;
+            align-items: center;
+        }
+        
+        .recipe-type {
+            background-color: #f0f0f0;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .recipe-rating {
+            color: #ffcc00;
+            font-size: 18px;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        
+        .recipe-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        
+        .action-btn {
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            font-size: 14px;
+            flex: 1;
+            text-align: center;
+        }
+        
+        .edit-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .edit-btn:hover {
+            background-color: #3e8e41;
+        }
+        
+        .remove-btn {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        .remove-btn:hover {
+            background-color: #d32f2f;
+        }
+        
+        /* Add Recipe Button */
+        .add-recipe {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        
+        .add-btn {
+            background-color: #2196F3;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .add-btn:hover {
+            background-color: #0b7dda;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+                height: 150px;
+            }
+            
+            .recipe-card {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+          <img src="imagess/logo.png" alt="Logo"
+            href="index.html" onclick="window.location.href='index.html'" />              
+
+        </div>
+      </div>
+    
+    
+    <h1>My Recipe Dashboard</h1>
+    
+    <div class="dashboard-content">
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search recipes...">
+        </div>
+        
+        <div class="total-recipes">Total Recipes: 4</div>
+        
+        <div class="recipe-container">
+            <div class="recipe-card">
+                <img src="imagess/816909.jpg" alt="Berry Smoothie">
+                <div class="recipe-content">
+                    <div class="recipe-title">Berry Smoothie</div>
+                    <div class="recipe-level">Easy</div>
+                    <div class="recipe-meta">
+                        <div class="recipe-time">10 Min</div>
+                        <div class="recipe-calories">150 Kcal</div>
+                    </div>
+                    
+                    <div class="recipe-rating">★★★★★</div>
+                    <div class="recipe-actions">
+                        <button class="action-btn edit-btn">Edit</button>
+                        <button class="action-btn remove-btn">Remove</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="recipe-card">
+                <img src="imagess/9a36fec0b2a1ea95644bf2bdc0c9bc24.jpg" alt="White Chocolate Blueberry Cupcakes">
+                <div class="recipe-content">
+                    <div class="recipe-title">White Chocolate Blueberry Cupcakes</div>
+                    <div class="recipe-level">Intermediate</div>
+                    <div class="recipe-meta">
+                        <div class="recipe-time">45 Min</div>
+                        <div class="recipe-calories">320 Kcal</div>
+                    </div>
+                    <div class="recipe-rating">★★★★☆</div>
+                    <div class="recipe-actions">
+                        <button class="action-btn edit-btn">Edit</button>
+                        <button class="action-btn remove-btn">Remove</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="recipe-card">
+                <img src="imagess/exps179920_SD153208D08_20_4b.jpg" alt="Stuffed Mushrooms">
+                <div class="recipe-content">
+                    <div class="recipe-title">Stuffed Mushrooms</div>
+                    <div class="recipe-level">Medium</div>
+                    <div class="recipe-meta">
+                        <div class="recipe-time">30 Min</div>
+                        <div class="recipe-calories">180 Kcal</div>
+                    </div>
+                    <div class="recipe-rating">★★★★★</div>
+                    <div class="recipe-actions">
+                        <button class="action-btn edit-btn">Edit</button>
+                        <button class="action-btn remove-btn">Remove</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="recipe-card">
+                <img src="imagess/1288020.jpg" alt="Salmon">
+                <div class="recipe-content">
+                    <div class="recipe-title">Salmon</div>
+                    <div class="recipe-level">Advanced</div>
+                    <div class="recipe-meta">
+                        <div class="recipe-time">25 Min</div>
+                        <div class="recipe-calories">280 Kcal</div>
+                    </div>
+                    <div class="recipe-rating">★★★★★</div>
+                    <div class="recipe-actions">
+                        <button class="action-btn edit-btn">Edit</button>
+                        <button class="action-btn remove-btn">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="add-recipe">
+            <button class="add-btn">+ Add New Recipe</button>
+        </div>
+    </div>
+    
+  
+</body>
+</html>
