@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favorite Recipes</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #fff8ec;
+    }
+
+    .header {
+      background: #ffcc00;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .back-btn {
+      background: white;
+      border: 2px solid white;
+      color: #ffcc00;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: #fff;
+      color: #e6b800;
+    }
+
+    .fav-title {
+      text-align: center;
+      font-size: 36px;
+      font-weight: bold;
+      margin: 40px 0 10px;
+      color: #444;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .fav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      padding: 40px;
+      animation: fadeIn 1.2s ease-in;
+    }
+
+    .fav-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s ease;
+      position: relative;
+    }
+
+    .fav-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .fav-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+
+    .fav-content {
+      padding: 20px;
+    }
+
+    .fav-title-text {
+      font-size: 22px;
+      font-weight: bold;
+      color: #333;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .fav-title-text:hover {
+      color: #ffcc00;
+    }
+
+    .fav-description {
+      font-size: 14px;
+      color: #777;
+      margin-top: 8px;
+    }
+
+    .stars {
+      color: #ffcc00;
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    .remove-fav {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      font-size: 18px;
+      cursor: pointer;
+      color: #ff4d4d;
+      transition: background 0.3s ease;
+    }
+
+    .remove-fav:hover {
+      background: #ffe6e6;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .fav-title {
+        font-size: 26px;
+      }
+
+      .fav-card img {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="logo">
+      <img src="imagess/logo.png" alt="Logo">
+    </div>
+    <button class="back-btn" onclick="window.location.href='index.html'">← Back to Home</button>
+  </div>
+
+  <div class="fav-title">Your Favorite Recipes</div>
+
+  <div class="fav-grid">
+
+    <div class="fav-card">
+      <button class="remove-fav" title="Remove from favorites">❤️</button>
+      <img src="imagess/816909.jpg" alt="Berry Smoothie" />
+      <div class="fav-content">
+        <a href="Smoothie.html" class="fav-title-text">Berry Smoothie</a>
+        <p class="fav-description">A refreshing blend of mixed berries, yogurt, and a touch of honey, perfect for a healthy boost!</p>
+        <div class="stars">★★★★★</div>
+      </div>
+    </div>
+
+    <div class="fav-card">
+      <button class="remove-fav" title="Remove from favorites">❤️</button>
+      <img src="imagess/9a36fec0b2a1ea95644bf2bdc0c9bc24.jpg" alt="White Chocolate Blueberry Cupcakes">
+      <div class="fav-content">
+        <a href="white_chocolate_cupcakes.html" class="fav-title-text">White Chocolate Blueberry Cupcakes</a>
+        <p class="fav-description">Fluffy cupcakes filled with the richness of white chocolate and the sweetness of blueberries.</p>
+        <div class="stars">★★★★☆</div>
+      </div>
+    </div>
+
+    <div class="fav-card">
+      <button class="remove-fav" title="Remove from favorites">❤️</button>
+      <img src="imagess/exps179920_SD153208D08_20_4b.jpg" alt="Stuffed Mushrooms">
+      <div class="fav-content">
+        <a href="stuffed_mushrooms.html" class="fav-title-text">Stuffed Mushrooms</a>
+        <p class="fav-description">Elegant and creamy mushrooms stuffed with a delightful blend of cheese and herbs.</p>
+        <div class="stars">★★★★★</div>
+      </div>
+    </div>
+
+    <div class="fav-card">
+      <button class="remove-fav" title="Remove from favorites">❤️</button>
+      <img src="imagess/1288020.jpg" alt="Salmon">
+      <div class="fav-content">
+        <a href="salmon.html" class="fav-title-text">Salmon</a>
+        <p class="fav-description">A perfect balance of crispy skin and tender, juicy salmon fillets.</p>
+        <div class="stars">★★★★★</div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
